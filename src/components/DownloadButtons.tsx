@@ -1,11 +1,15 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { DOWNLOADS, detectOs, type Os } from "../links";
 
 const LABEL: Record<Os, string> = { macos: "macOS", windows: "Windows" };
 
-/** Primary button for the visitor's OS, secondary for the other one. */
+/**
+ * Primary button for the visitor's OS, secondary for the other one. The OS is only
+ * known in the browser, so the prerendered HTML starts with macOS first.
+ */
 export function DownloadButtons() {
-  const os = useMemo(detectOs, []);
+  const [os, setOs] = useState<Os | null>(null);
+  useEffect(() => setOs(detectOs()), []);
   const order: Os[] = os === "windows" ? ["windows", "macos"] : ["macos", "windows"];
 
   return (

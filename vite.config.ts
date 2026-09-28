@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Relative base: works on GitHub Pages (/armypage/) and on a custom domain.
+// Served from the domain root (army.expressers.ao).
 export default defineConfig({
-  base: "./",
+  base: "/",
   plugins: [react()],
 });
