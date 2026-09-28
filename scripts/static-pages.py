@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Generates host-agnostic static pages into public/ (works on Render, Vercel, any CDN):
+
+- /download/mac and /download/windows: redirect to the latest installer in the
+  public expressers/army-releases repository (GitHub counts each download).
+- /downloads/: download counts per platform and version, read from the GitHub API
+  in the browser (unauthenticated, CORS-enabled).
+"""
+from pathlib import Path
+
+PUBLIC = Path(__file__).resolve().parent.parent / "public"
+LATEST = "https://github.com/expressers/army-releases/releases/latest/download"
+
+REDIRECT = """<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url={url}" />
+    <link rel="canonical" href="https://army.expressers.ao/" />
+    <title>A descarregar o Army para {label}…</title>
+    <script>location.replace({url!r});</script>
+    <style>body{{font:16px system-ui,sans-serif;background:#05060a;color:#e5e7eb;display:grid;place-items:center;height:100vh;margin:0}}a{{color:#93c5fd}}</style>
+  </head>
+  <body>
+    <p>A transferência do Army para {label} vai começar. Se não começar, <a href="{url}">clica aqui</a>.</p>
+  </body>
+</html>
+"""
+
+for slug, label, asset in [("mac", "macOS", "Army-macOS.dmg"), ("windows", "Windows", "Army-Windows-Setup.exe")]:
+    html = REDIRECT.format(url=f"{LATEST}/{asset}", label=label)
+    for path in (PUBLIC / "download" / slug / "index.html", PUBLIC / "download" / f"{slug}.html"):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(html)
+
+STATS = """<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Army · Downloads</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; min-height: 100vh; background: #05060a; color: #f5f7fb;
+             font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+             display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
+      main { width: 100%; max-width: 720px; }
+      h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 4px; }
+      .muted { color: #9aa3b5; font-size: 14px; }
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+      .card { border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 20px; background: rgba(255,255,255,.04); }
+      .card b { display: block; font-size: 40px; font-weight: 700; letter-spacing: -0.03em;
+                background: linear-gradient(95deg,#60a5fa,#22d3ee,#a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+      th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,.08); }
+      th:first-child, td:first-child { text-align: left; }
+      th { color: #9aa3b5; font-weight: 500; font-size: 14px; }
+      @media (max-width: 520px) { .cards { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Downloads do Army</h1>
+      <p class="muted" id="status">A carregar…</p>
+      <div class="cards">
+        <div class="card"><b id="all">–</b><span class="muted">Total</span></div>
+        <div class="card"><b id="mac">–</b><span class="muted">macOS</span></div>
+        <div class="card"><b id="windows">–</b><span class="muted">Windows</span></div>
+      </div>
+      <table>
+        <thead><tr><th>Versão</th><th>Publicada</th><th>macOS</th><th>Windows</th><th>Total</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="muted">Contagem do GitHub (expressers/army-releases). Conta transferências, não instalações; pode demorar alguns minutos a actualizar.</p>
+    </main>
+    <script>
+      const fmt = (n) => n.toLocaleString("pt-PT");
+      const $ = (id) => document.getElementById(id);
+      fetch("https://api.github.com/repos/expressers/army-releases/releases?per_page=100", {
+        headers: { Accept: "application/vnd.github+json" },
+      })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((releases) => {
+          const total = { mac: 0, windows: 0 };
+          $("rows").replaceChildren(
+            ...releases.map((r) => {
+              const v = { mac: 0, windows: 0 };
+              for (const a of r.assets) {
+                if (a.name.endsWith(".dmg")) v.mac += a.download_count;
+                else if (a.name.endsWith(".exe")) v.windows += a.download_count;
+              }
+              total.mac += v.mac;
+              total.windows += v.windows;
+              const tr = document.createElement("tr");
+              for (const text of [r.tag_name, new Date(r.published_at).toLocaleDateString("pt-PT"), fmt(v.mac), fmt(v.windows), fmt(v.mac + v.windows)]) {
+                const td = document.createElement("td");
+                td.textContent = text;
+                tr.append(td);
+              }
+              return tr;
+            }),
+          );
+          $("mac").textContent = fmt(total.mac);
+          $("windows").textContent = fmt(total.windows);
+          $("all").textContent = fmt(total.mac + total.windows);
+          $("status").textContent = "Actualizado às " + new Date().toLocaleTimeString("pt-PT");
+        })
+        .catch(() => ($("status").textContent = "Não foi possível obter a contagem agora. Tenta daqui a pouco."));
+    </script>
+  </body>
+</html>
+"""
+(PUBLIC / "downloads").mkdir(exist_ok=True)
+(PUBLIC / "downloads" / "index.html").write_text(STATS)
+print("static pages generated")
