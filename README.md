@@ -1,6 +1,6 @@
 # Army: landing page
 
-Site do [Army](https://army.expressers.ao), um produto [Expressers](https://expressers.ao). Código da app: [Army](https://github.com/tchiinhemba/army): partilha de ecrã instantânea
+Site do [Army](https://army.expressers.ao), um produto [Expressers](https://expressers.ao). Código da app: [Army](https://github.com/expressers/army): partilha de ecrã instantânea
 entre Mac e Windows na rede local.
 
 React + TypeScript, gerido com [Bun](https://bun.sh) e compilado com Vite para HTML estático.
@@ -12,7 +12,7 @@ bun run build    # gera dist/
 ```
 
 Downloads: `/download/mac` e `/download/windows` redireccionam (vercel.json) para a última versão no
-repositório público [army-releases](https://github.com/tchiinhemba/army-releases), que só tem instaladores.
+repositório público [army-releases](https://github.com/expressers/army-releases), que só tem instaladores.
 Nunca precisam de ser actualizados.
 
 Contagem de downloads: `GET /api/downloads` (função Vercel em `api/downloads.ts`) devolve os totais por

@@ -2,7 +2,7 @@
 // public army-releases repository (GitHub counts every installer download).
 // Cached at the edge for 5 minutes to stay well within GitHub's API rate limits.
 
-const REPO = "tchiinhemba/army-releases";
+const REPO = "expressers/army-releases";
 
 interface Asset {
   name: string;
