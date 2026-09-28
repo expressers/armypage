@@ -1,10 +1,9 @@
 export const VERSION = "0.1.0";
-const RELEASES = "https://github.com/tchiinhemba/army/releases";
-
-// Version-less asset names attached to every release, so these never go stale.
+// Redirects in vercel.json to the latest installers (public army-releases repo,
+// which also counts downloads: see /api/downloads).
 export const DOWNLOADS = {
-  macos: `${RELEASES}/latest/download/Army-macOS.dmg`,
-  windows: `${RELEASES}/latest/download/Army-Windows-Setup.exe`,
+  macos: "/download/mac",
+  windows: "/download/windows",
 } as const;
 
 export type Os = keyof typeof DOWNLOADS;

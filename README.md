@@ -11,8 +11,12 @@ bun run dev      # http://localhost:5173
 bun run build    # gera dist/
 ```
 
-Os links de download apontam para `releases/latest/download/Army-macOS.dmg` e
-`Army-Windows-Setup.exe`, que cada release do Army publica, por isso nunca precisam de ser actualizados.
+Downloads: `/download/mac` e `/download/windows` redireccionam (vercel.json) para a última versão no
+repositório público [army-releases](https://github.com/tchiinhemba/army-releases), que só tem instaladores.
+Nunca precisam de ser actualizados.
+
+Contagem de downloads: `GET /api/downloads` (função Vercel em `api/downloads.ts`) devolve os totais por
+sistema e por versão, com base na contagem do GitHub. Actualiza a cada 5 minutos.
 
 Build: `vite build` seguido de `scripts/prerender.tsx`, que gera o HTML completo (SEO e pré-visualizações
 de links sem JavaScript); no browser o React faz *hydrate* por cima.
