@@ -1,33 +1,27 @@
+import { SectionHead } from "../components/SectionHead";
+
+const POINTS = [
+  ["Aceitação explícita", "O ecrã nunca é partilhado em silêncio. Nada é capturado antes de o outro lado aceitar."],
+  ["Encriptação moderna", "Protocolo Noise (Curve25519, ChaCha20-Poly1305), com chaves novas em cada sessão."],
+  ["Identidade verificada", "Cada dispositivo tem a sua chave; o Army confirma que falas com quem escolheste."],
+  ["Zero dados", "Sem servidores, contas, analytics ou rastreio. O que acontece na tua rede fica na tua rede."],
+];
+
 export function Security() {
   return (
     <section className="section" id="seguranca" aria-labelledby="sec-title">
-      <div className="container split">
-        <div>
-          <h2 id="sec-title">Rede local não quer dizer rede de confiança.</h2>
-          <p className="section-lead">Por isso o Army trata cada ligação como se estivesse numa rede pública.</p>
-          <ul className="checks">
-            <li>
-              <b>Aceitação explícita.</b> O ecrã nunca é partilhado em silêncio — o outro lado tem de aceitar, e
-              qualquer um pode parar a qualquer momento.
-            </li>
-            <li>
-              <b>Encriptação moderna.</b> Protocolo Noise (Curve25519, ChaCha20-Poly1305) com chaves novas em cada
-              sessão.
-            </li>
-            <li>
-              <b>Identidade verificada.</b> Cada dispositivo tem uma chave própria; o Army confirma que está a falar
-              com o computador que escolheste.
-            </li>
-            <li>
-              <b>Código de verificação.</b> Os dois ecrãs mostram o mesmo código de 6 dígitos. Se coincidem, ninguém
-              está no meio.
-            </li>
-            <li>
-              <b>Sem nuvem, sem dados.</b> Não há servidores, contas, análise de uso nem rastreio.
-            </li>
-          </ul>
-        </div>
-        <div className="code-card" aria-label="Exemplo: o mesmo código nos dois computadores">
+      <div className="container">
+        <SectionHead
+          id="sec-title"
+          eyebrow="Segurança"
+          title={
+            <>
+              Rede local <span className="gradient-text">não é rede de confiança.</span>
+            </>
+          }
+          lead="Por isso o Army trata cada ligação como se estivesse numa rede pública."
+        />
+        <div className="code-card glass" aria-label="Exemplo: o mesmo código nos dois computadores">
           <div className="code-side">
             <small>No teu Mac</small>
             <span>418 305</span>
@@ -39,7 +33,15 @@ export function Security() {
             <small>No PC do colega</small>
             <span>418 305</span>
           </div>
-          <p>Códigos iguais: ligação directa e segura.</p>
+          <p>Os dois ecrãs mostram o mesmo código de verificação. Se coincidem, ninguém está no meio.</p>
+        </div>
+        <div className="points">
+          {POINTS.map(([t, d]) => (
+            <div key={t} className="point">
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
