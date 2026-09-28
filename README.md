@@ -1,4 +1,4 @@
-# Army — landing page
+# Army: landing page
 
 Site de apresentação do [Army](https://github.com/tchiinhemba/army): partilha de ecrã instantânea
 entre Mac e Windows na rede local.
@@ -12,6 +12,6 @@ bun run build    # gera dist/
 ```
 
 Os links de download apontam para `releases/latest/download/Army-macOS.dmg` e
-`Army-Windows-Setup.exe`, que cada release do Army publica — nunca precisam de ser actualizados.
+`Army-Windows-Setup.exe`, que cada release do Army publica, por isso nunca precisam de ser actualizados.
 
 Deploy: cada push para `main` publica em GitHub Pages (`.github/workflows/pages.yml`).

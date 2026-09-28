@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="header">
       <div className="nav-pill">
-        <a className="brand" href="#top" aria-label="Army — início">
+        <a className="brand" href="#top" aria-label="Army, início">
           <Logo size={24} />
           <span>Army</span>
         </a>
