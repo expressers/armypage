@@ -11,12 +11,13 @@ bun run dev      # http://localhost:5173
 bun run build    # gera dist/
 ```
 
-Downloads: `/download/mac` e `/download/windows` redireccionam (vercel.json) para a última versão no
-repositório público [army-releases](https://github.com/expressers/army-releases), que só tem instaladores.
-Nunca precisam de ser actualizados.
+Downloads: `/download/mac` e `/download/windows` são páginas estáticas que redireccionam para a última
+versão no repositório público [army-releases](https://github.com/expressers/army-releases), que só tem
+instaladores. Nunca precisam de ser actualizadas.
 
-Contagem de downloads: `GET /api/downloads` (função Vercel em `api/downloads.ts`) devolve os totais por
-sistema e por versão, com base na contagem do GitHub. Actualiza a cada 5 minutos.
+Contagem de downloads: https://army.expressers.ao/downloads/ (lê a contagem do GitHub no browser).
+
+Páginas de download e de contagem: geradas com `python3 scripts/static-pages.py`.
 
 Build: `vite build` seguido de `scripts/prerender.tsx`, que gera o HTML completo (SEO e pré-visualizações
 de links sem JavaScript); no browser o React faz *hydrate* por cima.
@@ -24,4 +25,6 @@ de links sem JavaScript); no browser o React faz *hydrate* por cima.
 Ícones e imagem de partilha: fontes em `assets/*.svg`, gerados com `python3 scripts/generate-assets.py`
 (requer `rsvg-convert`, `brew install librsvg`).
 
-Deploy: Vercel, a partir de `main`.
+Deploy: Render (static site) a partir de `main`.
+- Build command: `bun install && bun run build`
+- Publish directory: `dist`
