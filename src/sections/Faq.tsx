@@ -7,7 +7,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Funciona entre casas ou escritórios diferentes?",
-    a: "Não — de propósito. O Army é para computadores próximos, na mesma rede local. Redes de convidados que isolam os dispositivos também impedem que se encontrem.",
+    a: "Não, e é de propósito. O Army é para computadores próximos, na mesma rede local. Redes de convidados que isolam os dispositivos também impedem que se encontrem.",
   },
   {
     q: "Posso controlar o outro computador?",

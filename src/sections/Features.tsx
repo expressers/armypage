@@ -13,7 +13,7 @@ const FEATURES: { icon: ReactNode; title: string; text: string; wide?: boolean }
     wide: true,
     icon: icon(<><path d="M5 12.5a10 10 0 0 1 14 0" /><path d="M8.5 16a5 5 0 0 1 7 0" /><circle cx="12" cy="19.5" r="1" /><path d="M1.5 9a15 15 0 0 1 21 0" /></>),
     title: "Local-first, por desenho",
-    text: "Descoberta automática por mDNS e vídeo directo de um computador para o outro. Nada passa por servidores — nem sequer precisas de internet.",
+    text: "Descoberta automática por mDNS e vídeo directo de um computador para o outro. Nada passa por servidores, nem sequer precisas de internet.",
   },
   {
     icon: icon(<><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></>),
@@ -60,7 +60,7 @@ export function Features() {
               Simples por fora. <span className="gradient-text">Sério por dentro.</span>
             </>
           }
-          lead="Não é mais uma plataforma de reuniões. É uma ferramenta rápida que faz uma coisa — e faz bem."
+          lead="Não é mais uma plataforma de reuniões. É uma ferramenta rápida que faz uma coisa, e faz bem."
         />
         <Spotlight className="bento">
           {FEATURES.map((f) => (

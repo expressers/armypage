@@ -18,7 +18,7 @@ export function Hero() {
           <span className="gradient-text">Em segundos.</span>
         </h1>
         <p className="lead">
-          O Army liga o teu computador ao que está ao lado — Mac ou Windows — e mostra o teu ecrã, directamente pela
+          O Army liga o teu computador ao que está ao lado, Mac ou Windows, e mostra o teu ecrã directamente pela
           rede local. Sem contas. Sem nuvem. Sem links de convite.
         </p>
         <DownloadButtons />
