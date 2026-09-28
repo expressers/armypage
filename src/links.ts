@@ -1,4 +1,4 @@
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 export const SITE = "https://army.expressers.ao";
 
 // Static pages (public/download/*) that redirect to the latest installer in the
