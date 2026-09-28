@@ -1,3 +1,6 @@
+import { LangProvider } from "./i18n/context";
+import type { Lang } from "./i18n/dict";
+import { DICTS } from "./i18n/dict";
 import { Header } from "./sections/Header";
 import { Hero } from "./sections/Hero";
 import { Principles } from "./sections/Principles";
@@ -9,15 +12,15 @@ import { Faq } from "./sections/Faq";
 import { FinalCta } from "./sections/FinalCta";
 import { Footer } from "./sections/Footer";
 
-export function App() {
+export function App({ lang }: { lang: Lang }) {
   return (
-    <>
+    <LangProvider lang={lang}>
       <div className="backdrop" aria-hidden="true">
         <div className="aurora" />
         <div className="gridlines" />
       </div>
       <a className="skip" href="#main">
-        Saltar para o conteúdo
+        {DICTS[lang].a11y.skip}
       </a>
       <Header />
       <main id="main">
@@ -31,6 +34,6 @@ export function App() {
         <FinalCta />
       </main>
       <Footer />
-    </>
+    </LangProvider>
   );
 }

@@ -1,28 +1,31 @@
 import { DownloadButtons } from "../components/DownloadButtons";
+import { DownloadCount } from "../components/DownloadCount";
+import { useT } from "../i18n/context";
 import { VERSION } from "../links";
 
 export function Hero() {
+  const t = useT();
   return (
     <section className="hero" id="top">
       <div className="container hero-inner">
         <a className="badge" href="#descarregar">
           <span className="badge-dot" />
-          <span>Versão {VERSION} disponível para Mac e Windows</span>
+          <span>{t.hero.badge.replace("{version}", VERSION)}</span>
           <span className="badge-arrow" aria-hidden="true">
             →
           </span>
         </a>
         <h1>
-          Partilha o teu ecrã.
+          {t.hero.title[0]}
           <br />
-          <span className="gradient-text">Em segundos.</span>
+          <span className="gradient-text">{t.hero.title[1]}</span>
         </h1>
-        <p className="lead">
-          O Army liga o teu computador ao que está ao lado, Mac ou Windows, e mostra o teu ecrã directamente pela
-          rede local. Sem contas. Sem nuvem. Sem links de convite.
-        </p>
+        <p className="lead">{t.hero.lead}</p>
         <DownloadButtons />
-        <p className="fine">Grátis · macOS 12.3+ · Windows 10 e 11 · ~5 MB</p>
+        <p className="fine hero-meta">
+          <DownloadCount />
+          <span>{t.hero.fine}</span>
+        </p>
       </div>
       <Showcase />
     </section>
@@ -31,14 +34,15 @@ export function Hero() {
 
 /** Faithful rendering of the two real app screens involved in a share, on a glowing stage. */
 function Showcase() {
+  const t = useT();
   return (
     <div className="container">
-      <div className="stage" aria-label="Ilustração: um Mac pede para partilhar o ecrã com um PC Windows, que aceita">
+      <div className="stage" role="img" aria-label={t.hero.demoLabel}>
         <div className="stage-glow" aria-hidden="true" />
-        <div className="demo">
+        <div className="demo" aria-hidden="true">
           <div className="window window-mac">
             <div className="titlebar">
-              <span className="lights" aria-hidden="true">
+              <span className="lights">
                 <i />
                 <i />
                 <i />
@@ -58,7 +62,7 @@ function Showcase() {
               <div className="app-row">
                 <span className="dot" />
                 <span className="app-row-text">
-                  <b>MacBook da Ana</b>
+                  <b>{t.hero.otherMac}</b>
                   <small>macOS</small>
                 </span>
                 <span className="chev">›</span>
@@ -70,7 +74,7 @@ function Showcase() {
             </div>
           </div>
 
-          <div className="beam" aria-hidden="true">
+          <div className="beam">
             <span className="beam-line" />
             <span className="beam-packet" />
             <span className="beam-packet delay" />
@@ -79,14 +83,12 @@ function Showcase() {
           <div className="window window-win">
             <div className="titlebar titlebar-win">
               <span className="title">Army</span>
-              <span className="win-controls" aria-hidden="true">
-                ─ ☐ ✕
-              </span>
+              <span className="win-controls">─ ☐ ✕</span>
             </div>
             <div className="app app-center">
               <p className="app-title">Screen sharing request</p>
               <p className="app-desc">
-                <b>iMac do Eládio</b> wants to share its screen with you.
+                <b>{t.hero.macName}</b> wants to share its screen with you.
               </p>
               <p className="app-code">
                 Code <b>418 305</b>
@@ -100,10 +102,10 @@ function Showcase() {
         </div>
         <div className="stage-tags" aria-hidden="true">
           <span>
-            <i className="tag-dot" /> Rede local
+            <i className="tag-dot" /> {t.hero.tags[0]}
           </span>
-          <span>Noise · ChaCha20-Poly1305</span>
-          <span>H.264 · até 1080p30</span>
+          <span>{t.hero.tags[1]}</span>
+          <span>{t.hero.tags[2]}</span>
         </div>
       </div>
     </div>
