@@ -1,3 +1,5 @@
+import { SectionHead } from "../components/SectionHead";
+
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Preciso de internet?",
@@ -5,7 +7,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Funciona entre casas ou escritórios diferentes?",
-    a: "Não — de propósito. O Army é para computadores próximos, na mesma rede local. Redes de convidados que isolam os dispositivos também impedem que se encontrem.",
+    a: "Não, e é de propósito. O Army é para computadores próximos, na mesma rede local. Redes de convidados que isolam os dispositivos também impedem que se encontrem.",
   },
   {
     q: "Posso controlar o outro computador?",
@@ -21,7 +23,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Porque é que o sistema mostra um aviso ao instalar?",
-    a: "Esta primeira versão ainda não está assinada com certificados da Apple e da Microsoft. O código é aberto e pode ser verificado no GitHub.",
+    a: "Esta primeira versão ainda não está assinada com certificados da Apple e da Microsoft. O código está público no GitHub e pode ser verificado.",
   },
   {
     q: "É grátis?",
@@ -33,7 +35,7 @@ export function Faq() {
   return (
     <section className="section" id="faq" aria-labelledby="faq-title">
       <div className="container narrow">
-        <h2 id="faq-title">Perguntas frequentes</h2>
+        <SectionHead id="faq-title" eyebrow="FAQ" title="Perguntas frequentes" />
         <div className="faq">
           {FAQ.map((f) => (
             <details key={f.q}>

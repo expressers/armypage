@@ -1,17 +1,23 @@
 import { OsIcon } from "../components/DownloadButtons";
+import { SectionHead } from "../components/SectionHead";
+import { Spotlight } from "../components/Spotlight";
 import { DOWNLOADS, RELEASES, VERSION } from "../links";
 
 export function Download() {
   return (
-    <section className="section section-alt" id="descarregar" aria-labelledby="dl-title">
+    <section className="section" id="descarregar" aria-labelledby="dl-title">
       <div className="container">
-        <h2 id="dl-title">Descarregar o Army</h2>
-        <p className="section-lead">Instala nos dois computadores. Ambos têm de estar na mesma rede.</p>
-        <div className="dl-grid">
-          <article className="dl-card">
+        <SectionHead
+          id="dl-title"
+          eyebrow="Descarregar"
+          title="Instala nos dois computadores."
+          lead="Ambos têm de estar na mesma rede. É só isso."
+        />
+        <Spotlight className="dl-grid">
+          <article className="glass dl-card">
             <OsIcon os="macos" />
             <h3>macOS</h3>
-            <p className="muted">macOS 12.3 ou mais recente · Intel e Apple Silicon</p>
+            <p className="muted">macOS 12.3+ · Intel e Apple Silicon</p>
             <a className="btn btn-primary" href={DOWNLOADS.macos}>
               Descarregar .dmg
             </a>
@@ -20,21 +26,22 @@ export function Download() {
               <ol>
                 <li>Abre o .dmg e arrasta o Army para Aplicações.</li>
                 <li>
-                  Na primeira vez, clica com o botão direito no Army e escolhe <b>Abrir</b> (a app ainda não está
-                  assinada pela Apple).
+                  Na primeira vez, clica com o botão direito no Army › <b>Abrir</b> (ainda não está assinado pela
+                  Apple).
                 </li>
-                <li>Permite o acesso à <b>Rede local</b> quando o macOS pedir.</li>
                 <li>
-                  Para partilhar o teu ecrã, activa o Army em Definições do Sistema › Privacidade e Segurança ›{" "}
-                  <b>Gravação de ecrã</b> e reabre a app.
+                  Permite o acesso à <b>Rede local</b> quando o macOS pedir.
+                </li>
+                <li>
+                  Para partilhar, activa o Army em Privacidade e Segurança › <b>Gravação de ecrã</b> e reabre a app.
                 </li>
               </ol>
             </details>
           </article>
-          <article className="dl-card">
+          <article className="glass dl-card">
             <OsIcon os="windows" />
             <h3>Windows</h3>
-            <p className="muted">Windows 10 (1903+) e Windows 11 · 64 bits</p>
+            <p className="muted">Windows 10 (1903+) e 11 · 64 bits</p>
             <a className="btn btn-primary" href={DOWNLOADS.windows}>
               Descarregar instalador
             </a>
@@ -43,16 +50,16 @@ export function Download() {
               <ol>
                 <li>Executa o instalador.</li>
                 <li>
-                  Se o SmartScreen avisar, clica em <b>Mais informações</b> › <b>Executar mesmo assim</b> (a app
-                  ainda não está assinada).
+                  Se o SmartScreen avisar: <b>Mais informações</b> › <b>Executar mesmo assim</b> (ainda não está
+                  assinado).
                 </li>
                 <li>
-                  Quando a Firewall perguntar, permite o Army em redes <b>privadas</b>.
+                  Permite o Army na Firewall em redes <b>privadas</b>.
                 </li>
               </ol>
             </details>
           </article>
-        </div>
+        </Spotlight>
         <p className="fine center">
           Versão {VERSION} · <a href={RELEASES}>Todas as versões e notas</a>
         </p>
