@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/download/mac",
-      "destination": "https://github.com/tchiinhemba/army-releases/releases/latest/download/Army-macOS.dmg",
+      "destination": "https://github.com/expressers/army-releases/releases/latest/download/Army-macOS.dmg",
       "permanent": false
     },
     {
@@ -13,7 +13,7 @@
     },
     {
       "source": "/download/windows",
-      "destination": "https://github.com/tchiinhemba/army-releases/releases/latest/download/Army-Windows-Setup.exe",
+      "destination": "https://github.com/expressers/army-releases/releases/latest/download/Army-Windows-Setup.exe",
       "permanent": false
     }
   ]
