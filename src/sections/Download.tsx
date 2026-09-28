@@ -1,7 +1,7 @@
 import { OsIcon } from "../components/DownloadButtons";
 import { SectionHead } from "../components/SectionHead";
 import { Spotlight } from "../components/Spotlight";
-import { DOWNLOADS, RELEASES, VERSION } from "../links";
+import { DOWNLOADS, VERSION } from "../links";
 
 export function Download() {
   return (
@@ -61,7 +61,7 @@ export function Download() {
           </article>
         </Spotlight>
         <p className="fine center">
-          Versão {VERSION} · <a href={RELEASES}>Todas as versões e notas</a>
+          Versão {VERSION} · Grátis, sem contas nem anúncios
         </p>
       </div>
     </section>
