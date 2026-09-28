@@ -187,13 +187,11 @@ a:hover {
   font-size: 14.5px;
 }
 
-.nav-pill nav a,
-.nav-gh {
+.nav-pill nav a {
   color: var(--muted);
 }
 
-.nav-pill nav a:hover,
-.nav-gh:hover {
+.nav-pill nav a:hover {
   color: var(--text);
   text-decoration: none;
 }
@@ -202,10 +200,6 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 14px;
-}
-
-.nav-gh {
-  display: inline-flex;
 }
 
 @media (max-width: 760px) {

@@ -1,5 +1,4 @@
 import { Logo } from "../components/Logo";
-import { REPO, RELEASES } from "../links";
 
 export function Footer() {
   return (
@@ -13,8 +12,8 @@ export function Footer() {
           Um produto <a href="https://expressers.ao">Expressers</a>
         </span>
         <nav aria-label="Rodapé">
-          <a href={REPO}>GitHub</a>
-          <a href={RELEASES}>Versões</a>
+          <a href="#descarregar">Descarregar</a>
+          <a href="#faq">FAQ</a>
         </nav>
       </div>
     </footer>
