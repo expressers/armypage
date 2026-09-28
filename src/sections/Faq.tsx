@@ -23,7 +23,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Porque é que o sistema mostra um aviso ao instalar?",
-    a: "Esta primeira versão ainda não está assinada com certificados da Apple e da Microsoft. O código está público no GitHub e pode ser verificado.",
+    a: "Esta primeira versão ainda não está assinada com certificados da Apple e da Microsoft, por isso o sistema não reconhece o editor. A assinatura oficial chega numa próxima versão.",
   },
   {
     q: "É grátis?",

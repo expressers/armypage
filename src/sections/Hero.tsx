@@ -1,11 +1,11 @@
 import { DownloadButtons } from "../components/DownloadButtons";
-import { RELEASES, VERSION } from "../links";
+import { VERSION } from "../links";
 
 export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="container hero-inner">
-        <a className="badge" href={RELEASES}>
+        <a className="badge" href="#descarregar">
           <span className="badge-dot" />
           <span>Versão {VERSION} disponível para Mac e Windows</span>
           <span className="badge-arrow" aria-hidden="true">
