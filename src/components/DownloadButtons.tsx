@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useT } from "../i18n/context";
 import { DOWNLOADS, detectOs, type Os } from "../links";
 
 const LABEL: Record<Os, string> = { macos: "macOS", windows: "Windows" };
@@ -8,6 +9,7 @@ const LABEL: Record<Os, string> = { macos: "macOS", windows: "Windows" };
  * known in the browser, so the prerendered HTML starts with macOS first.
  */
 export function DownloadButtons() {
+  const t = useT();
   const [os, setOs] = useState<Os | null>(null);
   useEffect(() => setOs(detectOs()), []);
   const order: Os[] = os === "windows" ? ["windows", "macos"] : ["macos", "windows"];
@@ -17,7 +19,7 @@ export function DownloadButtons() {
       {order.map((o, i) => (
         <a key={o} className={i === 0 ? "btn btn-primary" : "btn btn-secondary"} href={DOWNLOADS[o]}>
           <OsIcon os={o} />
-          Descarregar para {LABEL[o]}
+          {t.downloadFor} {LABEL[o]}
         </a>
       ))}
     </div>

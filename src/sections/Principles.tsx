@@ -1,23 +1,17 @@
-const ITEMS = ["Sem contas", "Sem nuvem", "Sem servidores", "Sem links de convite", "Sem telemetria", "Sem anúncios"];
-
-const STATS = [
-  { value: "~5 MB", label: "app nativa, sem Electron" },
-  { value: "0", label: "servidores pelo meio" },
-  { value: "1080p", label: "a 30 fps, H.264" },
-  { value: "E2E", label: "encriptação Noise" },
-];
+import { useT } from "../i18n/context";
 
 export function Principles() {
+  const t = useT();
   return (
-    <section className="principles" aria-label="Princípios">
+    <section className="principles" aria-label={t.principles.label}>
       <div className="container">
         <ul className="pills">
-          {ITEMS.map((i) => (
+          {t.principles.items.map((i) => (
             <li key={i}>{i}</li>
           ))}
         </ul>
         <dl className="stats">
-          {STATS.map((s) => (
+          {t.principles.stats.map((s) => (
             <div key={s.label} className="stat">
               <dt className="gradient-text">{s.value}</dt>
               <dd>{s.label}</dd>
