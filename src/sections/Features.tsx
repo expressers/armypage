@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { SectionHead } from "../components/SectionHead";
+import { Spotlight } from "../components/Spotlight";
 
 const icon = (d: ReactNode) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -6,51 +8,63 @@ const icon = (d: ReactNode) => (
   </svg>
 );
 
-const FEATURES: { icon: ReactNode; title: string; text: string }[] = [
+const FEATURES: { icon: ReactNode; title: string; text: string; wide?: boolean }[] = [
   {
-    icon: icon(<><path d="M3 11l9-7 9 7" /><path d="M5 10v10h14V10" /><path d="M10 20v-5h4v5" /></>),
-    title: "Fica na tua rede",
-    text: "O vídeo vai directamente de um computador para o outro. Não passa por nenhum servidor, nem precisa de internet.",
+    wide: true,
+    icon: icon(<><path d="M5 12.5a10 10 0 0 1 14 0" /><path d="M8.5 16a5 5 0 0 1 7 0" /><circle cx="12" cy="19.5" r="1" /><path d="M1.5 9a15 15 0 0 1 21 0" /></>),
+    title: "Local-first, por desenho",
+    text: "Descoberta automática por mDNS e vídeo directo de um computador para o outro. Nada passa por servidores — nem sequer precisas de internet.",
   },
   {
     icon: icon(<><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></>),
-    title: "Encriptado de ponta a ponta",
-    text: "Cada sessão é cifrada e autenticada. Nada é capturado nem enviado antes de o outro lado aceitar.",
+    title: "Encriptado ponta a ponta",
+    text: "Cada sessão é cifrada e autenticada com chaves novas.",
   },
   {
     icon: icon(<path d="M13 2L4 14h7l-1 8 9-12h-7z" />),
-    title: "Rápido de verdade",
-    text: "Captura e codificação nativas (H.264 com aceleração por hardware no Mac), até 1080p a 30 fps, pensadas para baixa latência.",
-  },
-  {
-    icon: icon(<><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="2.5" /></>),
-    title: "Leve",
-    text: "Cerca de 5 MB. Sem Electron, sem processos pesados em fundo. Abre num instante e fica discreto na barra de menus.",
+    title: "Baixa latência",
+    text: "Captura nativa e H.264 com aceleração por hardware no Mac.",
   },
   {
     icon: icon(<><path d="M4 8h14l-3-3" /><path d="M20 16H6l3 3" /></>),
     title: "Mac ⇄ Windows",
-    text: "Do Mac para o PC, do PC para o Mac, ou entre dois iguais. A mesma experiência dos dois lados.",
+    text: "Nos dois sentidos, com a mesma experiência dos dois lados.",
   },
   {
     icon: icon(<><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /><path d="M3 3l18 18" /></>),
     title: "Sem contas",
-    text: "Sem registo, sem login, sem salas, sem links de convite. Sem telemetria nem rastreio.",
+    text: "Sem registo, sem login, sem salas nem links de convite.",
+  },
+  {
+    icon: icon(<><path d="M20 6L9 17l-5-5" /></>),
+    title: "Tu decides",
+    text: "Nada começa sem aceitação, e qualquer lado pode terminar a qualquer momento.",
+  },
+  {
+    wide: true,
+    icon: icon(<><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="2.5" /></>),
+    title: "Leve como uma ferramenta do sistema",
+    text: "Cerca de 5 MB, construído em Rust. Abre num instante, fica discreto na barra de menus e não corre nada pesado enquanto não estás a partilhar.",
   },
 ];
 
 export function Features() {
   return (
-    <section className="section section-alt" aria-labelledby="features-title">
+    <section className="section" id="funcionalidades" aria-labelledby="features-title">
       <div className="container">
-        <h2 id="features-title">Feito para ser simples — e rápido.</h2>
-        <p className="section-lead">
-          Pensa no Army como um AirDrop, mas para o ecrã: uma pequena ferramenta do sistema, não mais uma plataforma de
-          reuniões.
-        </p>
-        <div className="grid">
+        <SectionHead
+          id="features-title"
+          eyebrow="Funcionalidades"
+          title={
+            <>
+              Simples por fora. <span className="gradient-text">Sério por dentro.</span>
+            </>
+          }
+          lead="Não é mais uma plataforma de reuniões. É uma ferramenta rápida que faz uma coisa — e faz bem."
+        />
+        <Spotlight className="bento">
           {FEATURES.map((f) => (
-            <article key={f.title} className="card">
+            <article key={f.title} className={f.wide ? "glass card wide" : "glass card"}>
               <span className="card-icon" aria-hidden="true">
                 {f.icon}
               </span>
@@ -58,7 +72,7 @@ export function Features() {
               <p>{f.text}</p>
             </article>
           ))}
-        </div>
+        </Spotlight>
       </div>
     </section>
   );
