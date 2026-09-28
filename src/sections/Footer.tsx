@@ -9,7 +9,9 @@ export function Footer() {
           <Logo size={20} />
           Army
         </span>
-        <span className="muted">Partilha de ecrã local, simples e privada.</span>
+        <span className="muted">
+          Um produto <a href="https://expressers.ao">Expressers</a>
+        </span>
         <nav aria-label="Rodapé">
           <a href={REPO}>GitHub</a>
           <a href={RELEASES}>Versões</a>

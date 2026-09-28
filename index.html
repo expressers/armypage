@@ -3,29 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Army · Partilha de ecrã instantânea entre Mac e Windows | Expressers</title>
+    <meta
+      name="description"
+      content="Army partilha o ecrã do teu Mac ou PC Windows com o computador ao lado em segundos, pela rede local. Grátis, encriptado de ponta a ponta, sem contas, sem nuvem e sem internet."
+    />
+    <link rel="canonical" href="https://army.expressers.ao/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Expressers" />
+    <meta name="application-name" content="Army" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#05060a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Army by Expressers" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:url" content="https://army.expressers.ao/" />
+    <meta property="og:title" content="Army · Partilha o teu ecrã. Em segundos." />
+    <meta
+      property="og:description"
+      content="Abre o Army, escolhe o computador ao lado e o teu ecrã aparece. Mac e Windows, pela rede local, sem contas nem nuvem."
+    />
+    <meta property="og:image" content="https://army.expressers.ao/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Army: partilha o teu ecrã em segundos. Mac e Windows, rede local, encriptado, sem contas." />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Army · Partilha o teu ecrã. Em segundos." />
+    <meta
+      name="twitter:description"
+      content="Partilha de ecrã instantânea entre Mac e Windows na rede local. Grátis, encriptada, sem contas."
+    />
+    <meta name="twitter:image" content="https://army.expressers.ao/og-image.png" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <title>Army · Partilha de ecrã instantânea na rede local</title>
-    <meta
-      name="description"
-      content="Army partilha o ecrã entre Mac e Windows na mesma rede, em segundos. Sem contas, sem nuvem, sem links de convite. Encriptado de ponta a ponta."
-    />
-    <meta property="og:title" content="Army · Partilha de ecrã instantânea na rede local" />
-    <meta
-      property="og:description"
-      content="Abre, escolhe o computador ao lado, e o teu ecrã aparece. Mac e Windows. Sem contas, sem nuvem."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://expressers.ao/#organization",
+            "name": "Expressers",
+            "url": "https://expressers.ao/"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://army.expressers.ao/#website",
+            "url": "https://army.expressers.ao/",
+            "name": "Army",
+            "inLanguage": "pt",
+            "publisher": { "@id": "https://expressers.ao/#organization" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Army",
+            "description": "Partilha de ecrã instantânea entre Mac e Windows na mesma rede local. Encriptada de ponta a ponta, sem contas e sem servidores.",
+            "url": "https://army.expressers.ao/",
+            "image": "https://army.expressers.ao/og-image.png",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "macOS 12.3+, Windows 10, Windows 11",
+            "softwareVersion": "0.1.0",
+            "downloadUrl": [
+              "https://github.com/tchiinhemba/army/releases/latest/download/Army-macOS.dmg",
+              "https://github.com/tchiinhemba/army/releases/latest/download/Army-Windows-Setup.exe"
+            ],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://expressers.ao/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
